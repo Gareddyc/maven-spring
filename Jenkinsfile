@@ -1,5 +1,5 @@
 env.mvnHome = '/usr/share/maven'
-node('maven-label') {
+node('maven-label1') {
    
    
    stage('Preparation') { // for display purposes
@@ -8,7 +8,7 @@ node('maven-label') {
         
       
    }
-   stage('Build') {
+   stage('Build1') {
       
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' clean install"
@@ -16,7 +16,7 @@ node('maven-label') {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage('Results') {
+   stage('Results1') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
